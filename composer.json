@@ -1,8 +1,4 @@
 {
-  "name": "visto9259/laminas-webpack",
-  "description": "",
-  "version": "1.0.0",
-  "license": "MIT",
   "authors": [
     {
       "name": "Eric Richer",
@@ -10,6 +6,18 @@
       "role": "Lead"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Webpack\\": "src"
+    }
+  },
+  "description": "Laminas Webpack integration",
+  "keywords": [
+    "laminas",
+    "webpack"
+  ],
+  "license": "MIT",
+  "name": "visto9259/laminas-webpack",
   "require": {
     "php": "^7.2",
     "laminas/laminas-stdlib": "^3.2",
@@ -20,11 +28,6 @@
     "laminas/laminas-servicemanager": "^3.4"
   },
   "require-dev": {
-
   },
-  "autoload": {
-    "psr-4": {
-      "Webpack\\": "src"
-    }
-  }
+  "version": "1.0.0"
 }
