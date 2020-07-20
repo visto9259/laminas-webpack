@@ -42,7 +42,7 @@ class WebpackRouteListener extends AbstractListenerAggregate
         $controller = $e->getTarget();
         $layout = $controller->layout();
         $routeMatchedName = $e->getRouteMatch()->getMatchedRouteName();
-        $layout->setVariable('scriptlist', $this->options->getScriptList($routeMatchedName));
+        $layout->setVariable('scriptlist', $this->options->getScriptListByRoute($routeMatchedName));
     }
 
 }

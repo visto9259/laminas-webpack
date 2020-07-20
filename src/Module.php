@@ -6,8 +6,12 @@
 
 namespace Webpack;
 
+use Laminas\View\View;
+use Webpack\Config\WebpackOptions;
+use Webpack\Config\WebpackOptionsFactory;
 use Webpack\Listener\WebpackRouteListener;
 use Webpack\Listener\WebpackRouteListenerFactory;
+use Webpack\Listener\WebpackViewListener;
 use Webpack\View\Helper\ScriptLoaderHelper;
 use Webpack\View\Helper\ScriptLoaderHelperFactory;
 use Laminas\ModuleManager\Feature\ServiceProviderInterface;
@@ -42,6 +46,7 @@ class Module implements ViewHelperProviderInterface, ServiceProviderInterface
         return [
             'factories' => [
                 WebpackRouteListener::class => WebpackRouteListenerFactory::class,
+                WebpackOptions::class => WebpackOptionsFactory::class,
             ],
         ];
     }
@@ -56,8 +61,12 @@ class Module implements ViewHelperProviderInterface, ServiceProviderInterface
         $sm = $application->getServiceManager();
         $eventManager = $application->getEventManager();
 
-        // Attach the listener
+        // Attach the listeners
         $webpackRouteListener = $sm->get(WebpackRouteListener::class);
         $webpackRouteListener->attach($eventManager);
+
+        $view = $sm->get(View::class);
+        $webpackViewListener = $sm->get(WebpackViewListener::class);
+        $webpackViewListener->attach($view->getEventManager(), 100);
     }
 }
