@@ -12,6 +12,7 @@ use Webpack\Config\WebpackOptionsFactory;
 use Webpack\Listener\WebpackRouteListener;
 use Webpack\Listener\WebpackRouteListenerFactory;
 use Webpack\Listener\WebpackViewListener;
+use Webpack\Listener\WebpackViewListenerFactory;
 use Webpack\View\Helper\ScriptLoaderHelper;
 use Webpack\View\Helper\ScriptLoaderHelperFactory;
 use Laminas\ModuleManager\Feature\ServiceProviderInterface;
@@ -46,6 +47,7 @@ class Module implements ViewHelperProviderInterface, ServiceProviderInterface
         return [
             'factories' => [
                 WebpackRouteListener::class => WebpackRouteListenerFactory::class,
+                WebpackViewListener::class => WebpackViewListenerFactory::class,
                 WebpackOptions::class => WebpackOptionsFactory::class,
             ],
         ];
