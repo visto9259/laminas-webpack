@@ -18,6 +18,6 @@ class WebpackViewListenerFactory implements \Laminas\ServiceManager\Factory\Fact
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new WebpackOptions($container->get(WebpackOptions::class));
+        return new WebpackViewListener($container->get(WebpackOptions::class));
     }
 }
