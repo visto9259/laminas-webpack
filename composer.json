@@ -19,7 +19,7 @@
   "license": "MIT",
   "name": "visto9259/laminas-webpack",
   "require": {
-    "php": "^7.2",
+    "php": "^7.3 || ^8.0",
     "laminas/laminas-stdlib": "^3.2",
     "laminas/laminas-modulemanager": "^2.8",
     "laminas/laminas-mvc": "^3.1",
