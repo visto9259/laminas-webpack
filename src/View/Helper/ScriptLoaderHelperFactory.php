@@ -1,33 +1,24 @@
 <?php
-/**
- * Factory for the ScriptLoaderHelper
- * Requires that the application has a PHP Renderer
- *
- * @author Eric Richer <eric.richer@vistoconsulting.com>
- *
- */
 
+declare(strict_types=1);
 
 namespace Webpack\View\Helper;
 
-
-use Exception;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\View\Renderer\PhpRenderer;
+use Psr\Container\ContainerInterface;
 
+/**
+ * Factory for the ScriptLoaderHelper
+ * Requires that the application has a PHP Renderer
+ */
 class ScriptLoaderHelperFactory implements FactoryInterface
 {
-
     /**
      * @inheritDoc
-     * @throws Exception
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): ScriptLoaderHelper
     {
-        // Get the PHP Renderer service
-        $renderer = $container->get(PhpRenderer::class);
-        if (!$renderer) throw new Exception('No PHP Renderer defined');
-        return new ScriptLoaderHelper($renderer);
+        return new ScriptLoaderHelper($container->get(PhpRenderer::class));
     }
 }

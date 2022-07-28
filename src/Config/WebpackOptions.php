@@ -1,95 +1,95 @@
 <?php
-/**
- * Webpack options
- * @author Eric Richer <eric.richer@vistoconsulting.com>
- */
+
+declare(strict_types=1);
 
 namespace Webpack\Config;
 
 use Exception;
 use Laminas\Stdlib\AbstractOptions;
 
+use function file_exists;
+use function fnmatch;
+
+/**
+ * Webpack options
+ */
 class WebpackOptions extends AbstractOptions
 {
+    protected array $routes    = [];
+    protected array $templates = [];
 
-    /**
-     * @var array
-     */
-    protected $routes;
-    /**
-     * @var string
-     */
-    protected $dist_path;
-    /**
-     * @var string
-     */
-    protected $default_entry_point;
-    /**
-     * @var string
-     */
-    protected $entrypoint_map_file;
+    // phpcs:ignore WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCapsProperty
+    protected ?string $dist_path = null;
 
-    /**
-     * @var array
-     */
-    protected $entry_point_map = [];
+    // phpcs:ignore WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCapsProperty
+    protected ?string $default_entry_point = null;
 
-    protected $templates = [];
+    // phpcs:ignore WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCapsProperty
+    protected ?string $entrypoint_map_file = null;
 
-    public function setRoutes($routes)
+    // phpcs:ignore WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCapsProperty
+    protected array $entry_point_map = [];
+
+    public function setRoutes(array $routes): void
     {
         $this->routes = $routes;
     }
 
-    public function setdistpath($path)
+    public function getRoutes(): array
+    {
+        return $this->routes;
+    }
+
+    public function setDistPath(string $path): void
     {
         $this->dist_path = $path;
     }
 
-    public function setDefaultEntryPoint($entryPoint)
+    public function getDistPath(): ?string
+    {
+        return $this->dist_path;
+    }
+
+    public function setDefaultEntryPoint(string $entryPoint): void
     {
         $this->default_entry_point = $entryPoint;
     }
 
-    /**
-     * @param $entryPointMapFile
-     * @throws Exception
-     */
-    public function setEntrypointMapFile($entryPointMapFile)
+    public function getDefaultEntryPoint(): ?string
     {
-        if (!file_exists($entryPointMapFile)) {
-            throw new Exception("$entryPointMapFile does not exists.");
-        }
-        $this->entrypoint_map_file = $entryPointMapFile;
-        $this->entry_point_map = include $entryPointMapFile;
+        return $this->default_entry_point;
     }
 
     /**
-     * @param $templates array
+     * @throws Exception
      */
-    public function setTemplates($templates)
+    public function setEntrypointMapFile(string $entryPointMapFile): void
+    {
+        if (! file_exists($entryPointMapFile)) {
+            throw new Exception("$entryPointMapFile does not exists.");
+        }
+        $this->entrypoint_map_file = $entryPointMapFile;
+        $this->entry_point_map     = include $entryPointMapFile;
+    }
+
+    public function getEntrypointMapFile(): ?string
+    {
+        return $this->entrypoint_map_file;
+    }
+
+    public function setTemplates(array $templates): void
     {
         $this->templates = $templates;
     }
 
-    /**
-     * @param $routeMatched string
-     * @return array
-     * @deprecated
-     */
-    public function getScriptList($routeMatched)
+    public function getTemplates(): array
     {
-        return $this->getScriptListByRoute($routeMatched);
+        return $this->templates;
     }
 
-
-    /**
-     * @param $routeMatched string
-     * @return array
-     */
-    public function getScriptListByRoute($routeMatched)
+    public function getScriptListByRoute(string $routeMatched): array
     {
-        foreach ($this->routes as $key=>$value) {
+        foreach ($this->routes as $key => $value) {
             if (fnmatch($key, $routeMatched)) {
                 return $this->entry_point_map[$value];
             } elseif (fnmatch($value, $routeMatched)) {
@@ -99,13 +99,9 @@ class WebpackOptions extends AbstractOptions
         return [];
     }
 
-    /**
-     * @param $template string
-     * @return array
-     */
-    public function getScriptListByTemplate($template)
+    public function getScriptListByTemplate(string $template): array
     {
-        foreach ($this->templates as $key=>$value) {
+        foreach ($this->templates as $key => $value) {
             if (fnmatch($key, $template)) {
                 return $this->entry_point_map[$value];
             } elseif (fnmatch($value, $template)) {

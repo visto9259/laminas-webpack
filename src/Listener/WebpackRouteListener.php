@@ -1,24 +1,20 @@
 <?php
-/**
- * @author Eric Richer <eric.richer@vistoconsulting.com>
- */
+
+declare(strict_types=1);
 
 namespace Webpack\Listener;
 
-
-use Webpack\Config\WebpackOptions;
 use Laminas\EventManager\AbstractListenerAggregate;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\Mvc\Controller\AbstractController;
 use Laminas\Mvc\MvcEvent;
+use Webpack\Config\WebpackOptions;
 
 class WebpackRouteListener extends AbstractListenerAggregate
 {
+    protected WebpackOptions $options;
 
-    /* @var WebpackOptions*/
-    protected $options;
-
-    public function __construct($options)
+    public function __construct(WebpackOptions $options)
     {
         $this->options = $options;
     }
@@ -26,23 +22,24 @@ class WebpackRouteListener extends AbstractListenerAggregate
     /**
      * @inheritDoc
      */
-    public function attach(EventManagerInterface $events, $priority = 1)
+    public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $sharedManager = $events->getSharedManager();
         // Attach to the dispatch event of the AbstractController
-        $sharedManager->attach(AbstractController::class, 'dispatch', [$this, 'setScriptList'], $priority);
+        $sharedManager->attach(
+            AbstractController::class,
+            MvcEvent::EVENT_DISPATCH,
+            [$this, 'setScriptList'],
+            $priority
+        );
     }
 
-    /**
-     * @param MvcEvent $e
-     */
-    public function setScriptList( MvcEvent $e)
+    public function setScriptList(MvcEvent $e): void
     {
-        /* @var AbstractController $controller*/
-        $controller = $e->getTarget();
-        $layout = $controller->layout();
+        /** @var AbstractController $controller */
+        $controller       = $e->getTarget();
+        $layout           = $controller->plugin('layout');
         $routeMatchedName = $e->getRouteMatch()->getMatchedRouteName();
         $layout->setVariable('scriptlist', $this->options->getScriptListByRoute($routeMatchedName));
     }
-
 }
