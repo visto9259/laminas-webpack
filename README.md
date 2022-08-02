@@ -12,3 +12,7 @@ See the content of `composer.json` for dependencies.
 Using Composer
 
     $ composer require visto9259/laminas-webpack 
+
+## Documentation
+
+Documentation can be found [here](https://visto9259.github.io/docs/laminas-webpack).
