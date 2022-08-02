@@ -5,3 +5,4 @@ phpunit.xml.dist export-ignore
 phpcs.xml export-ignore
 psalm.xml export-ignore
 composer.lock export-ignore
+* text=auto eol=lf
