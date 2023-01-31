@@ -78,6 +78,7 @@ class WebpackOptions extends AbstractOptions
     {
         $this->routeNotFoundUseDefault = $flag;
     }
+
     /**
      * @param $routeMatched string
      * @return array
@@ -102,6 +103,7 @@ class WebpackOptions extends AbstractOptions
                 return $this->entry_point_map[$this->default_entry_point];
             }
         }
+        // No matching route found, check if default is used
         if ($this->routeNotFoundUseDefault) return $this->getScriptListByTemplate();
         else return [];
     }
