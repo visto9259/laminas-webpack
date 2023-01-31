@@ -15,6 +15,7 @@ use Exception;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Laminas\View\Renderer\PhpRenderer;
+use Webpack\Config\WebpackOptions;
 
 class ScriptLoaderHelperFactory implements FactoryInterface
 {
@@ -28,6 +29,7 @@ class ScriptLoaderHelperFactory implements FactoryInterface
         // Get the PHP Renderer service
         $renderer = $container->get(PhpRenderer::class);
         if (!$renderer) throw new Exception('No PHP Renderer defined');
-        return new ScriptLoaderHelper($renderer);
+        $webpackOptions = $container->get(WebpackOptions::class);
+        return new ScriptLoaderHelper($renderer, $webpackOptions);
     }
 }

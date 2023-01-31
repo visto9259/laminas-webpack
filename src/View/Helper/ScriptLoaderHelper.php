@@ -10,6 +10,7 @@ namespace Webpack\View\Helper;
 
 use Laminas\View\Helper\AbstractHelper;
 use Laminas\View\Renderer\PhpRenderer;
+use Webpack\Config\WebpackOptions;
 
 class ScriptLoaderHelper extends AbstractHelper
 {
@@ -21,9 +22,12 @@ class ScriptLoaderHelper extends AbstractHelper
 
     protected $rendered = false;
 
-    public function __construct($renderer)
+    protected WebpackOptions $options;
+
+    public function __construct($renderer, $options)
     {
         $this->renderer = $renderer;
+        $this->options = $options;
     }
 
     /**
@@ -38,10 +42,21 @@ class ScriptLoaderHelper extends AbstractHelper
         $view = $this->getView();
         // Get the list of scripts
         $scriptlist = $this->renderer->scriptlist;
+
         if ($scriptlist && is_array($scriptlist)) {
             if (method_exists($view, 'plugin')) {
                 $helper = $view->plugin('headScript');
                 foreach ($scriptlist as $key => $script) {
+                    // Append the list of scripts in the HEAD section
+                    $helper->appendFile($script);
+                }
+                $this->rendered = true;
+            }
+        } elseif ($this->options->getRouteNotFoundUseDefault()) {
+            if (method_exists($view, 'plugin')) {
+                $helper = $view->plugin('headScript');
+                $defautlScriptList = $this->options->getDefaultScriptList();
+                foreach ($defautlScriptList as $key => $script) {
                     // Append the list of scripts in the HEAD section
                     $helper->appendFile($script);
                 }

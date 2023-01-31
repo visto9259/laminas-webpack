@@ -102,7 +102,8 @@ class WebpackOptions extends AbstractOptions
                 return $this->entry_point_map[$this->default_entry_point];
             }
         }
-        return [];
+        if ($this->routeNotFoundUseDefault) return $this->getScriptListByTemplate();
+        else return [];
     }
 
     /**
@@ -119,6 +120,11 @@ class WebpackOptions extends AbstractOptions
             }
         }
         return [];
+    }
+
+    public function getDefaultScriptList(): array
+    {
+        return $this->entry_point_map[$this->default_entry_point];
     }
 
     public function getRouteNotFoundUseDefault(): bool
