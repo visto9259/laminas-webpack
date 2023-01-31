@@ -36,6 +36,8 @@ class WebpackOptions extends AbstractOptions
 
     protected $templates = [];
 
+    protected $routeNotFoundUseDefault = false;
+
     public function setRoutes($routes)
     {
         $this->routes = $routes;
@@ -72,6 +74,10 @@ class WebpackOptions extends AbstractOptions
         $this->templates = $templates;
     }
 
+    public function setRouteNotFoundUseDefault(bool $flag)
+    {
+        $this->routeNotFoundUseDefault = $flag;
+    }
     /**
      * @param $routeMatched string
      * @return array
@@ -113,5 +119,10 @@ class WebpackOptions extends AbstractOptions
             }
         }
         return [];
+    }
+
+    public function getRouteNotFoundUseDefault(): bool
+    {
+        return $this->routeNotFoundUseDefault;
     }
 }
