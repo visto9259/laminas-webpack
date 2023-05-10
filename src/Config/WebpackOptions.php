@@ -104,7 +104,7 @@ class WebpackOptions extends AbstractOptions
             }
         }
         // No matching route found, check if default is used
-        if ($this->routeNotFoundUseDefault) return $this->getScriptListByTemplate();
+        if ($this->routeNotFoundUseDefault) return $this->getDefaultScriptList();
         else return [];
     }
 
