@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>laminas-webpack Blog</title>
+        <link>https://visto9259.github.io/laminas-webpack/blog</link>
+        <description>laminas-webpack Blog</description>
+        <lastBuildDate>Tue, 02 Aug 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[laminas-webpack 2.0 released.]]></title>
+            <link>https://visto9259.github.io/laminas-webpack/blog/2022/08/02/laminas-webpack-2-0</link>
+            <guid>https://visto9259.github.io/laminas-webpack/blog/2022/08/02/laminas-webpack-2-0</guid>
+            <pubDate>Tue, 02 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Version 2.0 of laminas-webpack is now available.]]></description>
+            <content:encoded><![CDATA[<p>Version 2.0 of <code>laminas-webpack</code> is now available.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary">​</a></h2><p>This release does not add new functionality.</p><ul><li>PHP versions supported: 7.4, 8.0. 8.1</li><li>Added type declarations</li><li>Added test and code checking</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="breaking-changes">Breaking Changes:<a href="#breaking-changes" class="hash-link" aria-label="Direct link to Breaking Changes:" title="Direct link to Breaking Changes:">​</a></h2><ul><li>Removed deprecated functions from version 1:<ul><li><code>WebpackOptions::getScriptList($routeMatched)</code></li></ul></li><li>Minimum requirements for PHP is 7.4.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="credits">Credits<a href="#credits" class="hash-link" aria-label="Direct link to Credits" title="Direct link to Credits">​</a></h2><p>Thanks to <a href="https://github.com/fabiang" target="_blank" rel="noopener noreferrer">fabiang</a> who made the updates.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Laminas Framework and Webpack integration]]></title>
+            <link>https://visto9259.github.io/laminas-webpack/blog/2020/07/10/laminas-webpack</link>
+            <guid>https://visto9259.github.io/laminas-webpack/blog/2020/07/10/laminas-webpack</guid>
+            <pubDate>Fri, 10 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[If you are using Laminas MVC and want to also use Webpack to bundle and manage]]></description>
+            <content:encoded><![CDATA[<p>If you are using Laminas MVC and want to also use Webpack to bundle and manage
+dependencies in your frontend Javascript, I wrote a <a href="/laminas-webpack/docs/guides/laminas-webpack-guide-getting-started">guide</a> that
+explains how to use the <a href="https://github.com/visto9259/laminas-webpack" target="_blank" rel="noopener noreferrer"><code>laminas-webpack</code></a> Laminas module and <a href="https://github.com/visto9259/php-webpack-plugin" target="_blank" rel="noopener noreferrer"><code>php-webpack-plugin</code></a>
+Webpack plugin to integrate and automate the bundling of frontend JS scripts in a Laminas Mvc application.</p><p>This is a replacement for <code>zend-webpack</code> which is now abandoned.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[zend-webpack is abandoned]]></title>
+            <link>https://visto9259.github.io/laminas-webpack/blog/2020/07/10/zend-webpack-abandoned</link>
+            <guid>https://visto9259.github.io/laminas-webpack/blog/2020/07/10/zend-webpack-abandoned</guid>
+            <pubDate>Fri, 10 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[zend-webpack is now abandoned and is no longer supported.]]></description>
+            <content:encoded><![CDATA[<p><code>zend-webpack</code> is now abandoned and is no longer supported. </p><p>Please use <code>laminas-webpack</code> instead.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Zend Framework and Webpack integration]]></title>
+            <link>https://visto9259.github.io/laminas-webpack/blog/2020/04/10/zf3-webpack</link>
+            <guid>https://visto9259.github.io/laminas-webpack/blog/2020/04/10/zf3-webpack</guid>
+            <pubDate>Fri, 10 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[If you are using ZF3 MVC and want to also use Webpack to bundle and manage]]></description>
+            <content:encoded><![CDATA[<p>If you are using ZF3 MVC and want to also use Webpack to bundle and manage
+dependencies in your frontend Javascript, I wrote a <a href="/laminas-webpack/docs/guides/laminas-webpack-guide-getting-started">guide</a> that
+explains how to use the <a href="https://github.com/visto9259/zend-webpack" target="_blank" rel="noopener noreferrer"><code>zend-webpack</code></a> ZF3 module and <a href="https://github.com/visto9259/php-webpack-plugin" target="_blank" rel="noopener noreferrer"><code>php-webpack-plugin</code></a>
+Webpack plugin to integrate and automate the bundling of frontend JS scripts in a ZF3 Mvc application.</p><p>I hope you find it useful.</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>
