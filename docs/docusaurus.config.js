@@ -20,6 +20,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'visto9259', // Usually your GitHub org/user name.
   projectName: 'laminas-webpack', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -97,11 +98,11 @@ const config = {
               },
               {
                 label: 'Getting started',
-                to: '/docs/category/getting-started',
+                to: '/docs/getting-started/installation',
               },
               {
                 label: 'Integrating Laminas MVC with Webpack',
-                to: 'category/integrating-laminas-mvc-with-webpack',
+                to: '/docs/guides/laminas-webpack-guide-getting-started',
               }
             ],
           },
