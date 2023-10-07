@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 defaults:
   run:
     shell: bash
-    working-directory: ./website
+    working-directory: ./docs
 
 on:
   push:
