@@ -25,7 +25,7 @@
     "laminas/laminas-mvc": "^3.1",
     "laminas/laminas-view": "^2.11",
     "laminas/laminas-eventmanager": "^3.2",
-    "laminas/laminas-servicemanager": "^3.4"
+    "laminas/laminas-servicemanager": "^4.0"
   },
   "require-dev": {
   },
